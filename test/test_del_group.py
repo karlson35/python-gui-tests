@@ -2,6 +2,8 @@ __author__ = 'Igor Nikolaev'
 
 import random
 
+from model.group import Group
+
 
 def test_del_group(app):
     if len(app.groups.get_group_list()) == 1:
@@ -11,4 +13,4 @@ def test_del_group(app):
     app.groups.delete_group(random_group)
     new_list = app.groups.get_group_list()
     old_list.remove(random_group)
-    assert sorted(old_list) == sorted(new_list)
+    assert sorted(old_list, key=Group.id_or_max) == sorted(new_list, key=Group.id_or_max)
