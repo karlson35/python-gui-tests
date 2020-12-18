@@ -19,3 +19,7 @@ class Group:
             return int(self.id)
         else:
             return maxsize
+
+    def name(self):
+        if self.name:
+            return self.name
